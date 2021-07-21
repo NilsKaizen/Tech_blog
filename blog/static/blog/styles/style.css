@@ -1,0 +1,41 @@
+.title{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900;
+}
+body{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 400;
+    background-color: #eee;
+}
+
+#error{
+    background: rgb(255, 156, 156);
+    border-radius: 10px;
+    
+}
+
+#p_card {
+    width: 100;
+}
+
+#p_form{
+    width: 500px;
+    /* height: 300px; */
+
+}
+
+#navbar{
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+}
+
+#publish{
+    background: rgb(255, 182, 182);
+    border-radius: 10px;
+}
+
+#u_name {
+    background:rgb(240, 198, 236);
+    border-radius: 10px;
+    padding: 0px 8px;
+}

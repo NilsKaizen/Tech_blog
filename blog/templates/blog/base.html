@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;800;900&display=swap" rel="stylesheet">
+            {% block head %}{% endblock %}
+            <title>Tech blog</title>
+            
+            <link rel="stylesheet" href="{% static 'blog/styles/style.css' %}">
+        
+    </head>
+
+    <body>
+        
+        <nav class="navbar navbar-expand-md navbar-light bg-light" id="navbar">
+            <div class="container-fluid">
+                
+                <a class="navbar-brand" href="{% url 'blog:home' %}">
+                    <div class="row">
+                        <div class="col">
+                        <img src="{% static 'blog/images/appstore.png' %}" alt="" width="30" height="30" class="d-inline-block align-text-top rounded">
+                        </div>
+                        <div class="col">
+                        <div class="title">My Tech blog</div>
+                        </div>
+
+                    </div>
+                    
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link active" aria-current="page" href="#" >About</a>
+                        <a class="nav-link active" href="https://www.github.com" target="_blank">Github</a>
+                        <a class="nav-link active" href="https://www.linkedin.com" target="_blank">LinkedIn</a>
+                        
+                    </div>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        {% if user.is_authenticated %}
+                        <a class="nav-link active" href="{% url 'blog:create_post' %}">New Post</a>
+                        <a class="nav-link active" href="{% url 'blog:draft_posts' %}">Drafts</a>
+                        
+                        <!-- <a class="nav-link active" href="{% url 'blog:home' %}">Blog</a> -->
+                        <a class="nav-link active" href="{% url 'blog:home' %}"><div id="u_name">{{ user.username }}</div></a>
+                        <form action="{% url 'users:logout' %}" method="post">
+                            {% csrf_token %}
+                            <button class="btn" id="navbar">Log Out</button>
+                        </form>
+                        {% else %}
+                        
+                        <a class="nav-link active" href="{% url 'users:login' %}">Log In</a>
+                        <a class="nav-link active" href="{% url 'users:signup' %}">Sign Up</a>
+                        {% endif %}
+                        
+                
+                    </div>
+                </div>
+            </div>
+        </nav>
+        
+        {% block content %}{% endblock %}
+               
+        </script>
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+            integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous">
+            </script>
+
+        <script type="text/javascript" src="{% static 'blog/functions/blog.js' %}" ></script>
+        
+    </body>
+
+</html>

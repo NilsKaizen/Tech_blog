@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+
+{% load static %}
+
+
+{% block content %}
+<div class="container mt-5" id="p_form">
+    <div class="container text-center my-3" id="error">
+        {{ error }}
+    </div>
+    <!-- <form method="POST">
+        {% csrf_token %}
+            <div class="form-group" >
+                <label for="exampleFormControlInput1">Title</label>
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="title">
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Text</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" name="text" rows="20"></textarea>
+            </div>
+            <p></p>
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" id="draft" name="draft" checked>
+                <label class="form-check-label" for="draft" >Draft</label>
+                
+            </div>
+            <div class="container text-center my-3" id="publish">
+                
+            </div>
+            
+
+            <button type="submit" class="btn btn-primary" id="b_c">Create</button>
+        
+
+    </form> -->
+    <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit" class="btn btn-primary" id="b_c">Create</button>
+    </form>
+    
+</div>
+{% endblock %}

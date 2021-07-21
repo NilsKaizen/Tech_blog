@@ -1,0 +1,31 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<dev class="container">
+    <div class="table">
+        {% for post in posts %}
+
+        <div class="card ms-5 w-50">
+            <div class="card-body">
+                <dev class="row">
+                    <dev class="col">
+                        <a href="{% url 'users:signup' %}">
+                            <h4 class="card-title">{{ post.title }}</h4>
+                        </a>
+
+                    </dev>
+                    <dev class="col">
+                        <h4 class="card-title">{{ post.date_p|date:'M d Y' }}</h4>
+                    </dev>
+
+                </dev>
+                <p class="card-text">{{ post.text|truncatechars:60 }}</p>
+
+            </div>
+        </div>
+
+        <!-- </dev> -->
+        {% endfor %}
+    </dev>
+</dev>
+{% endblock %}
